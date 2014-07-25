@@ -1,0 +1,35 @@
+Notes
+
+To test a websocket connection:
+
+var ws = new WebSocket("ws://localhost:9000/yoyo"); ws.onmessage = function(e) { console.log(e); };
+
+
+
+Example connection sequence from the browser.
+When it starts with a letter it comes from the server.
+
+o
+["{\"msg\":\"connect\",\"version\":\"pre2\",\"support\":[\"pre2\",\"pre1\"]}"]
+["{\"msg\":\"sub\",\"id\":\"SN6HLDtWPpSMiDwhk\",\"name\":\"meteor_autoupdate_clientVersions\",\"params\":[]}"]
+a["{\"server_id\":\"0\"}"]
+a["{\"msg\":\"connected\",\"session\":\"FNsuoJyjLMmNiJMr2\"}"]
+a["{\"msg\":\"added\",\"collection\":\"meteor_autoupdate_clientVersions\",\"id\":\"571a3fe3368aea99c698d0591a65dd2937e81081\",\"fields\":{\"current\":true}}"]
+a["{\"msg\":\"ready\",\"subs\":[\"SN6HLDtWPpSMiDwhk\"]}"]
+a["{\"msg\":\"ping\"}"]
+["{\"msg\":\"pong\"}"]
+h
+
+
+Meteor seems to use different DDP for the server and the client parts of meteor.
+When the Meteor server opens a DDP to Play it seems to send one json object per frame:
+{"msg":"connect","version":"pre2","support":["pre2","pre1"]}
+{"msg":"sub","id":"JjDQkAZpjWJjxRSpY","name":"bla","params":[]}
+
+When the browser opens a DDP to Play it seems to send messages wrapped in a list of strings:
+["{\"msg\":\"connect\",\"version\":\"pre2\",\"support\":[\"pre2\",\"pre1\"]}"]
+["{\"msg\":\"sub\",\"id\":\"SN6HLDtWPpSMiDwhk\",\"name\":\"meteor_autoupdate_clientVersions\",\"params\":[]}"]
+
+Also, for the client Play needs to send "o" right away, but the server seems to complain about the "o" message:
+"Discarding message with invalid JSON o"
+
