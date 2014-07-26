@@ -6,6 +6,9 @@ https://github.com/meteor/meteor/blob/master/packages/livedata/DDP.md
 Wall of code:
 https://github.com/meteor/meteor/blob/master/packages/livedata/livedata_server.js
 
+SockJS spec:
+http://sockjs.github.io/sockjs-protocol/sockjs-protocol-0.3.3.html
+
 
 
 To test a websocket connection:
@@ -40,4 +43,10 @@ When the browser opens a DDP to Play it seems to send messages wrapped in a list
 
 Also, for the client Play needs to send "o" right away, but the server seems to complain about the "o" message:
 "Discarding message with invalid JSON o"
+
+
+
+
+It looks like the Meteor server directly calls /websocket in a clean way.
+The client first does a call to /sockjs/info and then starts a websocket on something like /sockjs/544/byxz8flt/websocket
 
