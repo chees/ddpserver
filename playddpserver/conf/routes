@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /sockjs/info                controllers.Application.sockjsinfo
+#GET     /sockjs/info                controllers.Application.sockjsinfo
 GET     /*path                      controllers.Application.websocket(path: String)
 
 

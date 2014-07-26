@@ -16,9 +16,9 @@ object Application extends Controller {
   /**
    * We need to pretend we run SockJS since meteor checks this first before even trying to setup a websocket.
    */
+  /*
   def sockjsinfo = Action {
     println("Getting SockJS info")
-    // {"websocket":true,"origins":["*:*"],"cookie_needed":false,"entropy":4036343750}
     Ok(Json.obj(
       "websocket" -> true,
       "origins" -> List("*:*"),
@@ -28,6 +28,7 @@ object Application extends Controller {
       "access-control-allow-credentials" -> "true",
       "access-control-allow-origin" -> "http://localhost:3000")
   }
+  */
   
   def websocket(path: String) = WebSocket.acceptWithActor[JsValue, JsValue] { request => out =>
     println("Path: " + path)
