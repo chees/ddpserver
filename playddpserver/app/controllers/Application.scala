@@ -5,6 +5,7 @@ import play.api.mvc._
 import play.api.libs.json.Json
 import play.api.Play.current
 import actors.MyWebSocketActor
+import play.api.libs.json.JsValue
 
 object Application extends Controller {
 
@@ -28,7 +29,7 @@ object Application extends Controller {
       "access-control-allow-origin" -> "http://localhost:3000")
   }
   
-  def websocket(path: String) = WebSocket.acceptWithActor[String, String] { request => out =>
+  def websocket(path: String) = WebSocket.acceptWithActor[JsValue, JsValue] { request => out =>
     println("Path: " + path)
     MyWebSocketActor.props(out)
   }

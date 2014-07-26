@@ -9,6 +9,10 @@ https://github.com/meteor/meteor/blob/master/packages/livedata/livedata_server.j
 SockJS spec:
 http://sockjs.github.io/sockjs-protocol/sockjs-protocol-0.3.3.html
 
+Play sockjs libraries:
+https://github.com/fdimuccio/play2-sockjs
+https://github.com/alari/play-sockjs
+
 
 
 To test a websocket connection:

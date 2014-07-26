@@ -5,9 +5,9 @@
 var play = DDP.connect('http://localhost:9000');
 var Bla = new Meteor.Collection("bla", play);
 play.subscribe("bla");
-
+ 
 if (Meteor.isClient) {
-  window.employees = Employees;
+  //window.employees = Employees;
 
   Template.hello.greeting = function () {
     return "Welcome to meteorclient.";
